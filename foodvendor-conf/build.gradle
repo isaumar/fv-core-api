@@ -1,0 +1,23 @@
+dependencies {
+    compile(project(":${projectName}-dao"))
+    compile(project(":${projectName}-service"))
+    compile "javax.transaction:javax.transaction-api:1.2"
+    compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.11.0'
+    compile "javax.servlet:javax.servlet-api:$servletVersion"
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
+    compile "com.fasterxml.jackson.core:jackson-databind:2.9.6"
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.8.5'
+    compile("org.hibernate:hibernate-core:5.2.17.Final")
+    compile("org.javassist:javassist:3.22.0-GA")
+
+    compile group: 'org.springframework.security', name: 'spring-security-config', version: '5.2.2.RELEASE'
+    compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.3.3.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-jwt', version: '1.0.9.RELEASE'
+
+
+    compile 'org.freemarker:freemarker:2.3.23'
+
+    compile "com.googlecode.libphonenumber:libphonenumber:7.7.1"
+
+    compile 'com.google.firebase:firebase-admin:6.5.0'
+}

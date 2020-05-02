@@ -1,0 +1,8 @@
+rootProject.name = 'foodvendor'
+
+include "${projectName}-domain",
+        "${projectName}-dao",
+        "${projectName}-service",
+        "${projectName}-service-impl",
+        "${projectName}-conf",
+        "${projectName}-controller"

@@ -1,0 +1,61 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.6.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+	id 'war'
+}
+
+group = 'com.bw'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+}
+
+allprojects {
+	apply plugin: 'java'
+	repositories {
+		mavenCentral()
+		maven { url = 'https://jitpack.io' }
+	}
+	dependencies{
+		testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+		testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+	}
+
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+
+
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+
+	compile(project(":${projectName}-dao"))
+	compile(project(":${projectName}-service-impl"))
+	compile(project(":${projectName}-conf")) {
+		exclude module: "javax.servlet-api"
+	}
+	compile(project(":${projectName}-controller")) {
+		exclude module: "javax.servlet-api"
+	}
+
+
+	runtime 'org.postgresql:postgresql'
+}
+
+test {
+	useJUnitPlatform()
+}
